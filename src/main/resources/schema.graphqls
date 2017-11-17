@@ -1,0 +1,8 @@
+
+type Query {
+  goIt: String
+}
+
+schema {
+  query: Query
+}
