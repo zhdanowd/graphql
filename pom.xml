@@ -92,8 +92,8 @@
                 <version>${gatling-plugin.version}</version>
                 <configuration>
                     <resultsFolder>${project.basedir}/target/gatling/results</resultsFolder>
-                    <bodiesFolder>${project.basedir}/src/main/test/resources/bodies</bodiesFolder>
-                    <simulationsFolder>${project.basedir}/src/main/test/</simulationsFolder>
+                    <bodiesFolder>${project.basedir}/src/test/resources/bodies</bodiesFolder>
+                    <simulationsFolder>${project.basedir}/src/test/java</simulationsFolder>
                 </configuration>
                 <executions>
                     <execution>
