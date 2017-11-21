@@ -6,8 +6,18 @@
     <artifactId>graphql</artifactId>
     <packaging>war</packaging>
     <version>1.0-SNAPSHOT</version>
-    <name>vertx-test Maven Webapp</name>
+    <name>graphql-test</name>
     <url>http://maven.apache.org</url>
+
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+        <gatling.version>2.2.4</gatling.version>
+        <gatling-plugin.version>2.2.4</gatling-plugin.version>
+        <scala-maven-plugin.version>3.2.2</scala-maven-plugin.version>
+    </properties>
 
 
     <dependencies>
@@ -17,16 +27,19 @@
             <artifactId>graphql-java</artifactId>
             <version>3.0.0</version>
         </dependency>
+
         <dependency>
             <groupId>com.graphql-java</groupId>
             <artifactId>graphql-java-tools</artifactId>
             <version>3.2.0</version>
         </dependency>
+
         <dependency>
             <groupId>com.graphql-java</groupId>
             <artifactId>graphql-java-servlet</artifactId>
             <version>4.0.0</version>
         </dependency>
+
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
@@ -40,7 +53,16 @@
             <version>3.8.1</version>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>io.gatling.highcharts</groupId>
+            <artifactId>gatling-charts-highcharts</artifactId>
+            <version>${gatling.version}</version>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
+
     <build>
         <finalName>graphql-test</finalName>
         <plugins>
@@ -62,6 +84,24 @@
             <plugin>
                 <artifactId>maven-war-plugin</artifactId>
                 <version>3.1.0</version>
+            </plugin>
+
+            <plugin>
+                <groupId>io.gatling</groupId>
+                <artifactId>gatling-maven-plugin</artifactId>
+                <version>${gatling-plugin.version}</version>
+                <configuration>
+                    <resultsFolder>${project.basedir}/target/gatling/results</resultsFolder>
+                    <bodiesFolder>${project.basedir}/src/main/test/resources/bodies</bodiesFolder>
+                    <simulationsFolder>${project.basedir}/src/main/test/</simulationsFolder>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>integration-test</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

@@ -1,0 +1,1 @@
+{"query":"{\n  goIt\n}\n","variables":null,"operationName":null}
